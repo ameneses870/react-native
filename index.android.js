@@ -10,10 +10,10 @@ import {
   StyleSheet,
   Text,
   View,
-  Vibration
+
 } from 'react-native';
 import Saludo from './componentes/Saludo'; 
-import {styles} from './styles'
+import {styles} from './styles';
 export default class holamundo2 extends Component {
 
   render() {

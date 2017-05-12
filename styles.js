@@ -19,6 +19,21 @@ export const styles = StyleSheet.create({
    textAlign: 'center',
    color: '#333333',
    marginBottom: 5,
- }
+ },
+
+    iconWrap: {
+      paddingHorizontal: 7,
+      alignItems: "center",
+      justifyContent: "center",
+    },  
+    input: {
+      flex: 1,
+      paddingHorizontal: 10,
+      color: "#FFFFFF"
+    },
+    signupLinkText: {
+      color: "#FFF",
+      marginLeft: 5,
+    }
 
 });

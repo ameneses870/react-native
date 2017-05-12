@@ -9,21 +9,23 @@ import {
   ToastAndroid,
   TextInput  ,
   Vibration 
-} from 'react-native';
+} from 'react-native'; 
 const  mensaje = 'Bienvenido'
+import {styles} from './styles'
 export default class Saludo extends Component{
 	
-
- 	validarDatos = () => {
-    //var a = {this.state.username};
-      ToastAndroid.show("la puta   te pario", ToastAndroid.SHORT);  
-     Vibration.vibrate();
-    }
-
 	constructor(props){
 		super(props); 		
 		let mensaje = 'Hola Mundo';			
 	}
+
+ 	validarDatos = (nombre,apellido) => {
+    //var a = {this.state.username};
+      ToastAndroid.show("la puta   te pario", ToastAndroid.SHORT);  
+     	Vibration.vibrate([5,700]);
+    }
+
+
 
 	render(){
 //		let mensaje = 'Pruebas';
@@ -59,7 +61,7 @@ export default class Saludo extends Component{
             />
           </View>    
 
-          <TouchableOpacity activeOpacity={.5} onPress={this.validarDatos}>
+          <TouchableOpacity activeOpacity={.5} onPress={this.validarDatos("alonso","meneses")}>
             <Button
               onPress={this.validarDatos}
               style ={styles.instructions}
@@ -72,35 +74,3 @@ export default class Saludo extends Component{
 	}
 
 }
-const styles = StyleSheet.create({
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-    iconWrap: {
-      paddingHorizontal: 7,
-      alignItems: "center",
-      justifyContent: "center",
-    },  
-    input: {
-      flex: 1,
-      paddingHorizontal: 10,
-      color: "#FFFFFF"
-    },
-    signupLinkText: {
-      color: "#FFF",
-      marginLeft: 5,
-    }
-
-});
