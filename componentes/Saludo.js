@@ -8,32 +8,48 @@ import {
   Button,
   ToastAndroid,
   TextInput  ,
-  Vibration 
+  Vibration
 } from 'react-native'; 
-const  mensaje = 'Bienvenido'
-import {styles} from './styles'
+
+import {styles} from './../styles'
+import Saludo2 from './Saludo2'
 export default class Saludo extends Component{
-	
+
+	state = {
+		'username' : '',
+		'password' : '',
+		'muestro' : false
+	};
+
 	constructor(props){
-		super(props); 		
-		let mensaje = 'Hola Mundo';			
+		super(props);
 	}
 
- 	validarDatos = (nombre,apellido) => {
-    //var a = {this.state.username};
-      ToastAndroid.show("la puta   te pario", ToastAndroid.SHORT);  
-     	Vibration.vibrate([5,700]);
+ 	validarDatos = () => {
+ 		if (this.state.username == '' || this.state.password ==''){
+ 			ToastAndroid.show("usuario o contraseña vacios", ToastAndroid.SHORT);  		
+ 			Vibration.vibrate([5,700]);
+ 		}else{
+ 			this.setState({muestro: true});
+ 			//keyboardType={'phone-pad'} poner teclado para numeros
+ 		}
+      
+     	
     }
 
 
 
-	render(){
+	render(){ // se ejecuta cada que cambia el valor de un state
 //		let mensaje = 'Pruebas';
+	if (this.state.muestro){
+		return(
+			<View>
+				<Saludo2/>
+			</View>
+			)
+	}
 		return(			
-		<View>
-			<Text style={styles.instructions}>
-          		{mensaje}
-        	</Text>
+		<View>	
 
         	    <Text style={styles.welcome}>
           Welcome to React Native!
@@ -48,27 +64,34 @@ export default class Saludo extends Component{
 
          <View style={styles.inputWrap}>
             <TextInput 
+              ref="1"
               placeholder="Username" 
               onChangeText={(username) => this.setState({username})}
+              returKeyType="{next}" 
+              keyboardType={'phone-pad'}
+              onSubmitEditing = {()=> this.refs[2].focus()}
             />
           </View>
 
          <View style={styles.inputWrap}>
             <TextInput 
+              ref="2"
               placeholder="Password" 
               secureTextEntry
               onChangeText={(password) => this.setState({password})}
+              returKeyType="done"
+              onSubmitEditing = {this.validarDatos}
             />
           </View>    
 
-          <TouchableOpacity activeOpacity={.5} onPress={this.validarDatos("alonso","meneses")}>
+          
             <Button
               onPress={this.validarDatos}
               style ={styles.instructions}
               title={"Iniciar sesion"}  
               color ='#FF0000'          
             />
-          </TouchableOpacity>  
+          
 		</View>
 			)
 	}

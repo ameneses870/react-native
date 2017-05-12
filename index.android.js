@@ -13,12 +13,11 @@ import {
 
 } from 'react-native';
 import Saludo from './componentes/Saludo'; 
-import {styles} from './styles';
 export default class holamundo2 extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <View>
         <Saludo/>          
       </View>
     );
